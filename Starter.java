@@ -9,13 +9,13 @@ public class Starter {
         Scanner scan=new Scanner(System.in);
         String operation;
 
-        System.out.println("Input operation:");
+        System.out.println("Operation:");
         operation=scan.next();
 
-        System.out.println("Input first number:");
+        System.out.println("First number:");
         x=scan.nextDouble();
 
-        System.out.println("Input second number:");
+        System.out.println("Second number:");
         y=scan.nextDouble();
 
         Calculator calculator_Object=new Calculator(x,y);
