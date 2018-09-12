@@ -35,8 +35,6 @@ public class Starter {
                 break;
                 default:
                     System.out.println(operation + " is wrong operation");
-		    System.out.println("Try another symbol");
-                    
                     break;
 
         }
