@@ -3,7 +3,9 @@ import java.util.Scanner;
 public class Starter {
 
     public static void main(String[] args) {
+
         double x, y;
+
         Scanner scan=new Scanner(System.in);
         String operation;
 
