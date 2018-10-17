@@ -1,8 +1,13 @@
 import java.util.Scanner;
+import java.util.*;
+import java.util.function.*;
+
 //This is my code
 public class Starter {
 
     public static void main(String[] args) {
+	
+
 
         double x, y;
 
@@ -18,25 +23,9 @@ public class Starter {
         System.out.println("Second number:");
         y=scan.nextDouble();
 
-        Calculator calculator_Object=new Calculator(x,y);
+	Calculator calcObject = new Calculator();	
 
-        switch (operation) {
-            case "+":
-                System.out.println(operation + ": " + calculator_Object.Plus());
-                break;
-            case "*":
-                System.out.println(operation + ": " + calculator_Object.Multiply());
-                break;
-            case "-":
-                System.out.println(operation + ": " + calculator_Object.Minus());
-                break;
-            case "/":
-                System.out.println(operation + ": " + calculator_Object.Divide());
-                break;
-                default:
-                    System.out.println(operation + " is wrong operation");
-                    break;
+	System.out.println("Result: " + calcObject.GetResult(operation, x, y));
 
-        }
     }
 }

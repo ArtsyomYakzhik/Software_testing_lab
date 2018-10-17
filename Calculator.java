@@ -1,27 +1,24 @@
+import java.util.*;
+import java.util.function.*;
+
 public class Calculator {
 
-    private double x, y;
-    private const double pi=3.14;
+    private Map<String, BinaryOperator<Double>> functions= new HashMap<>();
 
-    public Calculator(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public Calculator() {
+    
+    functions.put("+", (a, b)->a+b);
+    functions.put("-", (a, b)->a-b);
+    functions.put("*", (a, b)->a*b);
+    functions.put("/", (a, b)->a/b);
+
+
     }
 
-    public double Plus() {
-        return x+y;
-    }
+    public Double GetResult(String type, Double x, Double y) {
 
-    public double Multiply() {
-        return x*y;
-    }
+    return (( functions.get( type )).apply(x, y));
 
-    public double Divide() {
-        return x/y;
-    }
-
-    public double Minus() {
-        return x-y;
     }
 //Comments
 
