@@ -20,7 +20,7 @@ public class TestCase {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.get(url);
 
-        driver.findElement(By.xpath("//*[@id='journeys']/label[2]")).click();
+        driver.findElement(By.xpath("//*[@id='journey']/label[2]")).click();
 
         driver.findElement(By.xpath( "//*[@id='pax']/div[2]/div[2]/span/a[1]" )).click();
         driver.findElement(By.xpath( "//*[@id='pax']/div[1]/div[2]/span/a[2]" )).click();
