@@ -19,13 +19,13 @@ public class ResultPage {
 
     private void waitLoadingPage(){
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"isLoaded\"]")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=isLoaded]")));
     }
 
     public boolean checkErrors(){
         int countOfOffers, countOfBuisnessClasses;
-        countOfOffers = driver.findElements(By.xpath("//*[@id=\"sortedOffers\"]/div/div")).size();
-        countOfBuisnessClasses = driver.findElements(By.xpath("//*[@class=\"fa fa-briefcase orange\"]")).size();
+        countOfOffers = driver.findElements(By.xpath("//*[@id=sortedOffers]/div/div")).size();
+        countOfBuisnessClasses = driver.findElements(By.xpath("//*[@class=fa fa-briefcase orange]")).size();
 
         return countOfOffers == countOfBuisnessClasses;
     }
