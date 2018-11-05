@@ -20,24 +20,24 @@ public class TestCase {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.get(url);
 
-        driver.findElement(By.xpath("//*[@id='journey']/label[2]")).click();
+        driver.findElement(By.xpath("//*[@for='journey-oneway']")).click();
 
         driver.findElement(By.xpath( "//*[@id='pax']/div[2]/div[2]/span/a[1]" )).click();
         driver.findElement(By.xpath( "//*[@id='pax']/div[1]/div[2]/span/a[2]" )).click();
 
         driver.findElement(By.xpath("//*[@id='cty0']")).sendKeys("Minsk");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[2]")));
-        driver.findElement(By.xpath("/html/body/div[3]/div[2]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='autocomplete-suggestions'][1]")));
+        driver.findElement(By.xpath("//*[@class='autocomplete-suggestions'][1]/div[2]")).click();
 
         driver.findElement(By.xpath("//*[@id='cty1']")).sendKeys("Moscow");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div[2]")));
-        driver.findElement(By.xpath("/html/body/div[4]/div[2]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='autocomplete-suggestions'][2]")));
+        driver.findElement(By.xpath("//*[@class='autocomplete-suggestions'][2]/div[2]")).click();
 
         driver.findElement(By.xpath("//*[@id='datesH']/div[1]/div[1]/div/div[2]/table")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='outCalHolderD']/div/div[2]/table/tbody/tr[2]/td[1]/a")));
         driver.findElement(By.xpath("//*[@id='outCalHolderD']/div/div[2]/table/tbody/tr[2]/td[1]/a")).click();
 		
-        driver.findElement(By.xpath("//*[@id='sf']/div[3]/div[2]/div")).submit();
+        driver.findElement(By.xpath("//div[@class='shared element']/div[2]/div")).submit();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"isLoaded\"]")));
 
         if(driver.findElements(By.id("searchResList")).size() == 0)
