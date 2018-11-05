@@ -7,70 +7,70 @@ public class Tests {
     public Triangle triangle = new Triangle();
     
     @Test
-    void FirstTest(){
+    void AllArgumentsIsOne(){
         
         assertEquals(triangle.isCanBe(1,1,1), true);
         
     }
 
     @Test
-    void SecondTest(){
+    void WithOneZeroArgument(){
         
         assertEquals(triangle.isCanBe(1,1,0), false);
         
     }
 
     @Test
-    void ThirdTest(){
+    void RightArguments(){
 
         assertEquals(triangle.isCanBe(3,4,5), true);
         
     }
 
     @Test
-    void FourthTest(){
+    void AllArgumentsIsZero(){
 
         assertEquals(triangle.isCanBe(0,0,0), false);
         
     }
 
     @Test
-    void FifthTest(){
+    void WithNegativeArgument(){
 
         assertEquals(triangle.isCanBe(4,5,-6), false);
         
     }
 
     @Test
-    void SixthTest(){
+    void WithSumEqualToThridArgument(){
 
         assertEquals(triangle.isCanBe(1,2,3), false);
         
     }
 
     @Test
-    void SeventhTest(){
+    void DifferenceOfSumAndThirdArgumentBy1(){
 
         assertEquals(triangle.isCanBe(1,2,4), false);
         
     }
 
     @Test
-    void EighthTest(){
+    void OneNotZeroArgument(){
 
-        assertEquals(triangle.isCanBe(0,0,0), false);
+        assertEquals(triangle.isCanBe(6,0,0), false);
         
     }
 
     @Test
-    void NinethTest(){
+    void EquilateralTriangle(){
 
-        assertEquals(triangle.isCanBe(3,2,3), true);
+        assertEquals(triangle.isCanBe(3,3,3), true);
         
     }
 
     @Test
-    void TenthTest(){
+    void OverridedArgument(){
 
         assertEquals(triangle.isCanBe(1,2,3000000000000000000000000000000000000000000), false);
         
