@@ -18,7 +18,7 @@ public class MainPage {
 
     private void setOptions(){
 
-        driver.findElement(By.xpath("//*[@id=\"journey\"]/label[2]")).click();
+        driver.findElement(By.xpath("//*[@id='journey']/label[2]")).click();
         driver.findElement(By.xpath("//*[@id=\"sf\"]/div[1]/div[2]/div/div[1]/label")).click();
     }
 

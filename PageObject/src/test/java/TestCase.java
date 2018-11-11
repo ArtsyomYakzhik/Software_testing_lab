@@ -1,15 +1,15 @@
-import org.
-import org.apache.http.util.Asserts;
+import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 /*
 Test case for checking right output for business class offers
  */
 
 public class TestCase {
 
-    public static void main(String[] args) {
+    @Test
+    public void checkBusinessOffers(){
 
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
@@ -24,12 +24,13 @@ public class TestCase {
 
             ResultPage resultPage = new ResultPage(mainpage.toResultPage());
 
-            Asserts.check(resultPage.checkErrors(),"Result have non business class offers");
+            Assert.assertTrue( "Result have non business class offers", resultPage.checkErrors());
         }
 
         finally{
 
-            driver.close();
+            driver.quit();
+            driver = null;
 
         }
     }
