@@ -20,7 +20,11 @@ public class MainPage {
 
         driver.findElement(By.xpath("//*[@id='journey']/label[2]")).click();
 <<<<<<< HEAD:PageObject/src/test/PageObject/MainPage.java
+<<<<<<< HEAD:PageObject/src/test/PageObject/MainPage.java
         driver.findElement(By.xpath("//*[@id=\"sf\"]/div[1]/div[2]/div/div[1]/label")).click();
+=======
+        driver.findElement(By.xpath("//*[@id='sf']/div[1]/div[2]/div/div[1]/label")).click();
+>>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d:PageObject/src/test/java/MainPage.java
 =======
         driver.findElement(By.xpath("//*[@id='sf']/div[1]/div[2]/div/div[1]/label")).click();
 >>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d:PageObject/src/test/java/MainPage.java

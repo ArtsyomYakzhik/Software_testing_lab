@@ -25,9 +25,12 @@ public class TestCase {
         driver.get(url);
 
         driver.findElement(By.xpath("//*[@for='journey-oneway']")).click();
+<<<<<<< HEAD
 
         driver.findElement(By.xpath( "//*[@name='children']/../a" )).click();
         driver.findElement(By.xpath( "//*[@name='adults']/../a[2]" )).click();
+=======
+>>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d
 
 <<<<<<< HEAD
         driver.findElement(By.id("cty0")).sendKeys("Minsk");
@@ -45,6 +48,9 @@ public class TestCase {
         driver.findElement(By.xpath("//*[@id='cty1']")).sendKeys("Moscow");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='autocomplete-suggestions'][2]")));
         driver.findElement(By.xpath("//*[@class='autocomplete-suggestions'][2]/div[2]")).click();
+<<<<<<< HEAD
+>>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d
+=======
 >>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d
 
         driver.findElement(By.xpath("//input[@id='outDate']")).click();
@@ -65,8 +71,12 @@ public class TestCase {
         driver = null;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d
 =======
 }
 >>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d
