@@ -29,6 +29,7 @@ public class TestCase {
         driver.findElement(By.xpath( "//*[@name='children']/../a" )).click();
         driver.findElement(By.xpath( "//*[@name='adults']/../a[2]" )).click();
 
+<<<<<<< HEAD
         driver.findElement(By.id("cty0")).sendKeys("Minsk");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-index='0']")));
         driver.findElement(By.xpath("//div[@data-index='0']")).click();
@@ -36,10 +37,25 @@ public class TestCase {
         driver.findElement(By.id("cty1")).sendKeys("Moscow");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='autocomplete-suggestions'][2]/div[@data-index='0']")));
         driver.findElement(By.xpath("//div[@class='autocomplete-suggestions'][2]/div[@data-index='0']")).click();
+=======
+        driver.findElement(By.xpath("//*[@id='cty0']")).sendKeys("Minsk");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='autocomplete-suggestions'][1]")));
+        driver.findElement(By.xpath("//*[@class='autocomplete-suggestions'][1]/div[2]")).click();
+
+        driver.findElement(By.xpath("//*[@id='cty1']")).sendKeys("Moscow");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='autocomplete-suggestions'][2]")));
+        driver.findElement(By.xpath("//*[@class='autocomplete-suggestions'][2]/div[2]")).click();
+>>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d
 
         driver.findElement(By.xpath("//input[@id='outDate']")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='outCalHolderD']/div/div[2]/table/tbody/tr[2]/td[1]/a")));
         driver.findElement(By.xpath("//*[@id='outCalHolderD']/div/div[2]/table/tbody/tr[2]/td[1]/a")).click();
+<<<<<<< HEAD
+=======
+		
+        driver.findElement(By.xpath("//div[@class='shared element']/div[2]/div")).submit();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"isLoaded\"]")));
+>>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d
 
         driver.findElement(By.xpath("//div[@class='element']/div[@class='button']")).submit();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("isLoaded")));
@@ -48,5 +64,9 @@ public class TestCase {
         driver.quit();
         driver = null;
     }
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> dceb17bce0358225edde7c0cffdaa82388dd218d
