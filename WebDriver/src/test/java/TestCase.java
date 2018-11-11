@@ -7,6 +7,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import javax.management.timer.Timer;
+
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.*;
 
 /*
@@ -29,27 +34,16 @@ public class TestCase {
         driver.findElement(By.xpath( "//*[@name='adults']/../a[2]" )).click();
 
         driver.findElement(By.id("cty0")).sendKeys("Minsk");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-index='0']")));
-        driver.findElement(By.xpath("//div[@data-index='0']")).click();
-
-        driver.findElement(By.id("cty1")).sendKeys("Moscow");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='autocomplete-suggestions'][2]/div[@data-index='0']")));
-        driver.findElement(By.xpath("//div[@class='autocomplete-suggestions'][2]/div[@data-index='0']")).click();
-	    
-        driver.findElement(By.xpath("//*[@id='cty0']")).sendKeys("Minsk");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='autocomplete-suggestions'][1]")));
         driver.findElement(By.xpath("//*[@class='autocomplete-suggestions'][1]/div[2]")).click();
 
-        driver.findElement(By.xpath("//*[@id='cty1']")).sendKeys("Moscow");
+        driver.findElement(By.id("cty1")).sendKeys("Moscow");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='autocomplete-suggestions'][2]")));
         driver.findElement(By.xpath("//*[@class='autocomplete-suggestions'][2]/div[2]")).click();
 	    
-        driver.findElement(By.xpath("//input[@id='outDate']")).click();
+        driver.findElement(By.id("outDate")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='outCalHolderD']/div/div[2]/table/tbody/tr[2]/td[1]/a")));
         driver.findElement(By.xpath("//*[@id='outCalHolderD']/div/div[2]/table/tbody/tr[2]/td[1]/a")).click();
-
-        driver.findElement(By.xpath("//div[@class='shared element']/div[2]/div")).submit();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"isLoaded\"]")));
 
         driver.findElement(By.xpath("//div[@class='element']/div[@class='button']")).submit();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("isLoaded")));

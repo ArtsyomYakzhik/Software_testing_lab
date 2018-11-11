@@ -19,7 +19,7 @@ public class ResultPage {
 
     private void waitLoadingPage(){
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=isLoaded]")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("isLoaded")));
     }
 
     public boolean checkErrors(){
