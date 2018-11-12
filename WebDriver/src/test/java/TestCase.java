@@ -24,30 +24,25 @@ public class TestCase {
     public void testOnlyChildPassangers(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         String url = "https://aviago.by/";
-
+        String year = "2018", month = "11", day = "4";
+        String cityXpath = "//div[(@class='autocomplete-suggestions') and (not(contains(@style,'display: none'))) and (not(contains(@data-index, .)))]";
         WebDriver driver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.get(url);
-
         driver.findElement(By.xpath("//*[@for='journey-oneway']")).click();
         driver.findElement(By.xpath( "//*[@name='children']/../a" )).click();
         driver.findElement(By.xpath( "//*[@name='adults']/../a[2]" )).click();
-
         driver.findElement(By.id("cty0")).sendKeys("Minsk");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='autocomplete-suggestions'][1]")));
-        driver.findElement(By.xpath("//*[@class='autocomplete-suggestions'][1]/div[2]")).click();
-
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(cityXpath)));
+        driver.findElement(By.xpath(cityXpath+"/div[2]")).click();
         driver.findElement(By.id("cty1")).sendKeys("Moscow");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='autocomplete-suggestions'][2]")));
-        driver.findElement(By.xpath("//*[@class='autocomplete-suggestions'][2]/div[2]")).click();
-	    
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(cityXpath)));
+        driver.findElement(By.xpath(cityXpath+"/div[2]")).click();
         driver.findElement(By.id("outDate")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='outCalHolderD']/div/div[2]/table/tbody/tr[2]/td[1]/a")));
-        driver.findElement(By.xpath("//*[@id='outCalHolderD']/div/div[2]/table/tbody/tr[2]/td[1]/a")).click();
-
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("outCalHolder")));
+        driver.findElement(By.xpath("//td[@data-year='"+year+"' and @data-month='"+month+"']//a[text()='"+day+"']/..")).click();
         driver.findElement(By.xpath("//div[@class='element']/div[@class='button']")).submit();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("isLoaded")));
-
         Assert.assertEquals(0, driver.findElements(By.id("searchResList")).size());
         driver.quit();
         driver = null;
