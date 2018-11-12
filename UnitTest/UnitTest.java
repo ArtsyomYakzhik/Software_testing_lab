@@ -1,78 +1,62 @@
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testing.Assert;
+import org.testing.annotations.Test;
 
 public class Tests {
     
     public Triangle triangle = new Triangle();
     
     @Test
-    void AllArgumentsIsOne(){
-        
-        assertEquals(triangle.isCanBe(1,1,1), true);
-        
+    void aZeroArgument(){
+        assertEquals(triangle.isCanBe(0,1,1), false);
+    }
+    
+    @Test
+    void bZeroArgument(){
+        assertEquals(triangle.isCanBe(1,0,1), false);
     }
 
     @Test
-    void WithOneZeroArgument(){
-        
+    void cZeroArgument(){
         assertEquals(triangle.isCanBe(1,1,0), false);
-        
     }
 
     @Test
-    void RightArguments(){
-
+    void rightArguments(){
         assertEquals(triangle.isCanBe(3,4,5), true);
-        
     }
 
     @Test
-    void AllArgumentsIsZero(){
-
+    void allArgumentsIsZero(){
         assertEquals(triangle.isCanBe(0,0,0), false);
-        
     }
 
     @Test
-    void WithNegativeArgument(){
-
+    void withNegativeArgument(){
         assertEquals(triangle.isCanBe(4,5,-6), false);
-        
     }
 
     @Test
-    void WithSumEqualToThridArgument(){
-
+    void withSumEqualThridArgument(){
         assertEquals(triangle.isCanBe(1,2,3), false);
-        
     }
 
     @Test
-    void DifferenceOfSumAndThirdArgumentBy1(){
-
-        assertEquals(triangle.isCanBe(1,2,4), false);
-        
+    void differenceOfSumAndThirdArgumentBy1(){
+        assertEquals(triangle.isCanBe(1,2,4), false);        
     }
 
     @Test
-    void OneNotZeroArgument(){
-
-        assertEquals(triangle.isCanBe(6,0,0), false);
-        
+    void oneNotZeroArgument(){
+        assertEquals(triangle.isCanBe(6,0,0), false);        
     }
 
     @Test
-    void EquilateralTriangle(){
-
-        assertEquals(triangle.isCanBe(3,3,3), true);
-        
+    void equilateralTriangle(){
+        assertEquals(triangle.isCanBe(3,3,3), true);        
     }
 
     @Test
-    void OverridedArgument(){
-
-        assertEquals(triangle.isCanBe(1,2,3000000000000000000000000000000000000000000), false);
-        
+    void isoscelesTriangle(){
+        assertEquals(triangle.isCanBe(3,6,3), true);        
     }
 }
