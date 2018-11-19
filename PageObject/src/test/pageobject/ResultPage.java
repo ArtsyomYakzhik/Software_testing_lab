@@ -3,8 +3,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
 public class ResultPage {
 
     private WebDriver driver;
@@ -24,27 +22,26 @@ public class ResultPage {
     public void setRegistrationLuggageFilter(){
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@for='filter-baggage']")));
         driver.findElement(By.xpath("//label[@for='filter-baggage']")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sortwait")));
     }
 
     public int getResultOfBusinessOffers(){
-        int countOfAllOffers, countOfBusinessClassesOffers;
-        countOfAllOffers = driver.findElements(By.xpath("//td[@class='grey flight_num']//text()/..")).size();
-        countOfBusinessClassesOffers = driver.findElements(By.xpath("//i[@class='fa fa-briefcase orange']")).size();
-        quitWebDriver();
+        int countOfAllOffers = getCountOfAllOffers(),
+                countOfBusinessClassesOffers = driver.findElements(By.xpath("//i[@class='fa fa-briefcase orange']")).size();
         return countOfAllOffers - countOfBusinessClassesOffers;
     }
 
     public int getResultOfRegistrationLuggage(){
-        int countOfOffersWithRegistrationLuggage, countOfAllOffers;
-        countOfAllOffers = driver.findElements(By.xpath("//td[@class='grey flight_num']//text()/..")).size();
-        countOfOffersWithRegistrationLuggage = driver.findElements(By.xpath("//span[@class='baggage' and contains(text(),'бесплатно')]")).size();
-        quitWebDriver();
+        int countOfOffersWithRegistrationLuggage = getCountOfAllOffers(),
+                countOfAllOffers = driver.findElements(By.xpath("//span[@class='baggage' and contains(text(),'бесплатно')]")).size();
         return countOfAllOffers - countOfOffersWithRegistrationLuggage;
     }
 
-    public void quitWebDriver(){
-        driver.quit();
-        driver = null;
+    public int getCountOfAllOffers(){
+        return driver.findElements(By.xpath("//td[@class='grey flight_num']//text()/..")).size();
+    }
+
+    public boolean isResultEndWithError(){
+        return driver.findElements(By.xpath("//div[contains(text(), 'Поиск не дал результатов')]")).isEmpty();
     }
 }
