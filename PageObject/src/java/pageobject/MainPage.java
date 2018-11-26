@@ -1,5 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -7,7 +9,21 @@ import java.util.Calendar;
 
 public class MainPage {
 
+
     private final String url = "https://aviago.by/";
+
+    @FindBy(id = "outDate")
+    private WebElement calendarInput;
+
+    @FindBy(xpath = "//*[@for='journey-oneway']")
+    private WebElement oneWayModeButton;
+
+    @FindBy(xpath = "//label[@for='cabin2']")
+    private WebElement businessClassCheckBox;
+
+    @FindBy(xpath = "//div[@class='element']/div[@class='button']")
+    private WebElement submitButton;
+
     private WebDriver driver;
     private WebDriverWait wait;
 
@@ -31,7 +47,7 @@ public class MainPage {
     }
 
     private void setSendDate(Calendar senddate){
-        driver.findElement(By.id("outDate")).click();
+        calendarInput.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("outCalHolder")));
         driver.findElement(By.xpath(String.format("//td[@data-year='%d' and @data-month='%d']//a[text()='%d']/..",
                 senddate.get(Calendar.YEAR),
@@ -40,11 +56,11 @@ public class MainPage {
     }
 
     public void setBusinessClassOnly() {
-        driver.findElement(By.xpath("//label[@for='cabin2']")).click();
+        businessClassCheckBox.click();
     }
 
     public void setOneWayPath(){
-        driver.findElement(By.xpath("//*[@for='journey-oneway']")).click();
+        oneWayModeButton.click();
     }
 
     public void increaseNumberOfChilds(){
@@ -60,7 +76,7 @@ public class MainPage {
     }
 
     public ResultPage toResultPage() {
-        driver.findElement(By.xpath("//div[@class='element']/div[@class='button']")).submit();
+        submitButton.submit();
         return new ResultPage(driver);
     }
 }

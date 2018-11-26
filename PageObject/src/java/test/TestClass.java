@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 
-public class MainTestClass {
+public class TestClass {
 
     private Calendar calendar;
     private MainPage mainPage;
@@ -14,7 +14,7 @@ public class MainTestClass {
     @Before
     public void setUp(){
         calendar = Calendar.getInstance();
-        calendar.set(2018, 11, 15);
+        calendar.add(Calendar.MONTH, 1);
         mainPage = new MainPage();
         mainPage.setOneWayPath();
     }
@@ -24,7 +24,7 @@ public class MainTestClass {
         mainPage.setBusinessClassOnly();
         mainPage.fillOneWayFields("Minsk", "Moscow", calendar);
         resultPage = mainPage.toResultPage();
-        Assert.assertEquals(0, resultPage.getResultOfBusinessOffers());
+        Assert.assertTrue( resultPage.getResultOfBusinessOffers());
     }
 
     @Test
@@ -32,7 +32,7 @@ public class MainTestClass {
         mainPage.fillOneWayFields("Minsk", "Moscow", calendar);
         resultPage = mainPage.toResultPage();
         resultPage.setRegistrationLuggageFilter();
-        Assert.assertEquals(0, resultPage.getResultOfRegistrationLuggage());
+        Assert.assertTrue( resultPage.getResultOfRegistrationLuggage());
     }
 
     @Test
