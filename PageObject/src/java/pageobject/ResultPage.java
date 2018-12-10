@@ -2,8 +2,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResultPage {
@@ -20,9 +23,6 @@ public class ResultPage {
     @FindBy(xpath = "//span[@class='baggage' and contains(text(),'бесплатно')]")
     private List<WebElement> luggageRegistrationOffers;
 
-    @FindBy(xpath = "//div[contains(text(), 'Поиск не дал результатов')]")
-    private List<WebElement> errorBlock;
-
     private WebDriver driver;
     private WebDriverWait wait;
 
@@ -30,10 +30,12 @@ public class ResultPage {
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 50);
         waitLoadingPage();
+        PageFactory.initElements(this.driver, this);
     }
 
     private void waitLoadingPage(){
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("isLoaded")));
+        PageFactory.initElements(this.driver, this);
     }
 
     public void setRegistrationLuggageFilter(){
@@ -42,23 +44,31 @@ public class ResultPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sortwait")));
     }
 
-    public boolean getResultOfBusinessOffers(){
-        int countOfAllOffers = getCountOfAllOffers(),
-        countOfBusinessClassesOffers = businessClassOffers.size();
-        return countOfAllOffers == countOfBusinessClassesOffers;
+    public int getResultOfBusinessOffers(){
+        return businessClassOffers.size();
     }
 
-    public boolean getResultOfRegistrationLuggage(){
-        int countOfOffersWithRegistrationLuggage = getCountOfAllOffers(),
-                countOfAllOffers = luggageRegistrationOffers.size();
-        return countOfAllOffers == countOfOffersWithRegistrationLuggage;
+    public int getResultOfRegistrationLuggage(){
+        return luggageRegistrationOffers.size();
     }
 
     public int getCountOfAllOffers(){
         return listOfAllOffers.size();
     }
 
-    public boolean isResultEndWithError(){
-        return errorBlock.isEmpty();
+    public boolean isSearchEndWithError(){
+        return !driver.findElements(By.xpath("//div[contains(text(), 'Поиск не дал результатов')]")).isEmpty();
+    }
+
+    public int getReultOfWithChangedTimeZoneOffers(){
+        return driver.findElements(By.xpath("//*[@class='red small']")).size();
+    }
+
+    public Float[] getArrayCostOfOffers(){
+        List<WebElement> listOfOffers = driver.findElements(By.xpath("//*[@class='big price']/*"));
+        List<Float> listOfPrices = new ArrayList <Float>();
+        for(int i=0; i <= listOfOffers.size() - 1; i++)
+            listOfPrices.add(Float.valueOf(listOfOffers.get(i).getText().replace(',', '.').replaceAll("[^\\d.]+|\\.(?!\\d)", "")));
+        return listOfPrices.toArray(new Float[listOfPrices.size()]);
     }
 }
