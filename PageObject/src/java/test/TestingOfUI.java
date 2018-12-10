@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 
-public class TestingUI {
+public class TestingOfUI {
     private MainPage mainPage;
     private Calendar calendar;
     private ResultPage resultPage;
