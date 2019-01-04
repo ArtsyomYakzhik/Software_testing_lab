@@ -1,4 +1,3 @@
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,8 +36,8 @@ public class TestOfValidation {
         Assert.assertTrue(mainPage.isPageHaveErrorMessage());
     }
 
-    @After
-    public void stopBrowser(){
-        DriverSingelton.closeDriver();
-    }
+    //@After
+    //public void stopBrowser(){
+      //  DriverSingelton.closeDriver();
+    //}
 }
