@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Calendar;
 
-public class TestingOfSearchLogic {
+public class TestOfSearchLogic {
 
     private Calendar calendar;
     private MainPage mainPage;

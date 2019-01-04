@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.Calendar;
 
-public class TestingOfDifferenceSearchParameters {
+public class TestOfDifferenceSearchParameters {
     private MainPage mainPage;
     private Calendar calendar;
     private ResultPage resultPage;

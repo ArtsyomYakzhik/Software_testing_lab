@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 
-public class TestingOfValidation {
+public class TestOfValidation {
 
     private MainPage mainPage;
 
