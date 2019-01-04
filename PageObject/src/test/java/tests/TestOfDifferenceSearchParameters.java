@@ -22,7 +22,7 @@ public class TestOfDifferenceSearchParameters {
     {
         mainPage.fillOneWayFields("Minsk", "Tokyo", calendar);
         resultPage = mainPage.toResultPage();
-        Assert.assertEquals(resultPage.getReultOfWithChangedTimeZoneOffers(), resultPage.getCountOfAllOffers());
+        Assert.assertEquals(resultPage.getResultOfWithChangedTimeZoneOffers(), resultPage.getCountOfAllOffers());
     }
 
     @After

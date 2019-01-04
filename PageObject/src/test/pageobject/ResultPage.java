@@ -60,7 +60,7 @@ public class ResultPage {
         return !driver.findElements(By.xpath("//div[contains(text(), 'Поиск не дал результатов')]")).isEmpty();
     }
 
-    public int getReultOfWithChangedTimeZoneOffers(){
+    public int getResultOfWithChangedTimeZoneOffers(){
         return driver.findElements(By.xpath("//*[@class='red small']")).size();
     }
 
