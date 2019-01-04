@@ -16,7 +16,7 @@ public class DriverSingelton {
     }
 
     private static void setInstance(){
-        System.setProperty("webdriver.chrome.driver", "src/resources/driverbinary/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/driverbinary/chromedriver.exe");
         driver = new ChromeDriver();
         setSettings();
     }
